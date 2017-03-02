@@ -19,16 +19,26 @@ export  default class SelectTime extends React.Component {
   render () {
     let checkViewImage = <input type="image" name="picture"  src={playButtonDown} className="play" onClick={this.inverseImage} />
     if (this.state.checkImage) {
-      checkViewImage = <input type="image" name="picture"  src={playButtonUp} className="play" onClick={this.inverseImage} />
+      checkViewImage =
+            <div>
+              <input type="image" name="picture"  src={playButtonUp} className="play" onClick={this.inverseImage} />
+              <div>
+                <inline>
+                  <button className="round">Past</button>
+                  <button className="round">Present</button>
+                  <button className="round">Future</button>
+                </inline>
+              </div>
+            </div>
     }
     return (
           <div>
             <div>
             {checkViewImage}
             </div>
+            <div>
 
-
-
+            </div>
           </div>
     );
   }

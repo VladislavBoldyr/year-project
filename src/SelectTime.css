@@ -1,5 +1,15 @@
 .play{
-  width:50px;
-  height:50px;
+  width:100px;
+  height:100px;
   outline: none;
+}
+.round {
+  width: 100px;
+  height: 100px;
+  background: #ffffff;
+ -moz-border-radius: 50px;
+ -webkit-border-radius: 50px;
+  border-radius: 50px;
+  outline: none;
+  text-align:center;
 }
