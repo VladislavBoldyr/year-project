@@ -45,11 +45,6 @@ export default class EnterWord extends React.Component{
              </inline>
             </div>
           </p>
-          <div>
-            <button type="submit" className="buttonSizeforPlay">
-              <img src="play-button.png" />  
-            </button>
-          </div>
          </div>
       );
     }
