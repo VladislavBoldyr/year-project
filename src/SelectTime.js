@@ -7,14 +7,15 @@ export  default class SelectTime extends React.Component {
   constructor(props) {
      super(props);
      this.state={
-     verb:this.props.verb,
      subject:this.props.subject,
+     verb:this.props.verb,
      checkImage:false,
      checkElementTime:false,
      checkOpen:true,
      checkState:"",
      text:""
      }
+
      this.inverseImage = this.inverseImage.bind(this);
      this.saveStatePast = this.saveStatePast.bind(this);
      this.saveStatePresent = this.saveStatePresent.bind(this);
@@ -34,6 +35,7 @@ export  default class SelectTime extends React.Component {
         });
         return;
     }
+
     this.setState({
       checkElementTime:!this.state.checkElementTime,
       checkState:"past",
@@ -73,7 +75,7 @@ export  default class SelectTime extends React.Component {
     });
   }
   render () {
-    alert(this.props.verb);
+    let ViewElementsTime = <div></div>
     let checkViewImage = <input type="image" name="picture"  src={playButtonDown} className="play" onClick={this.inverseImage} />
     if (this.state.checkImage) {
         checkViewImage =
@@ -88,15 +90,15 @@ export  default class SelectTime extends React.Component {
               </div>
             </div>
     }
-    let ViewElementsTime = <div></div>
-    if (this.state.checkElementTime) {
+
+    if (this.state.checkElementTime && this.state.checkImage ) {
         ViewElementsTime =
             <div>
               <inline>
-                <button className="round" onClick>Simple</button>
-                <button className="round">Continuos</button>
-                <button className="round">Prefect Simple</button>
-                <button className="round">Prefect Continuos</button>
+                <button  className="round1">Simple</button>
+                <button className="round1">Continuos</button>
+                <button className="round1">Prefect Simple</button>
+                <button className="round1">Prefect Continuos</button>
               </inline>
             </div>
     }

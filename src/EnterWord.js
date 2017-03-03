@@ -6,8 +6,8 @@ export default class EnterWord extends React.Component{
    constructor(props) {
       super(props);
       this.state={
-        subject:this.props.subject,
-        verb:this.props.verb
+        subject:"",
+        verb:""
       }
       this.handleChangeSubject = this.handleChangeSubject.bind(this);
       this.handleChangeVerb = this.handleChangeVerb.bind(this);
@@ -28,6 +28,7 @@ export default class EnterWord extends React.Component{
    }
 
     render () {
+      alert(this.state.verb);
       return (
         <div>
           <p align="justify">
