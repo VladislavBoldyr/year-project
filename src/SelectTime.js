@@ -7,6 +7,8 @@ export  default class SelectTime extends React.Component {
   constructor(props) {
      super(props);
      this.state={
+     verb:this.props.verb,
+     subject:this.props.subject,
      checkImage:false,
      checkElementTime:false,
      checkOpen:true,
@@ -36,9 +38,8 @@ export  default class SelectTime extends React.Component {
       checkElementTime:!this.state.checkElementTime,
       checkState:"past",
       checkOpen:false
-
     });
-    alert(this.state.checkState);
+
   }
   saveStatePresent() {
     if (!this.state.checkOpen) {
@@ -72,6 +73,7 @@ export  default class SelectTime extends React.Component {
     });
   }
   render () {
+    alert(this.props.verb);
     let checkViewImage = <input type="image" name="picture"  src={playButtonDown} className="play" onClick={this.inverseImage} />
     if (this.state.checkImage) {
         checkViewImage =
@@ -102,6 +104,8 @@ export  default class SelectTime extends React.Component {
           <div>
             {checkViewImage}
             {ViewElementsTime}
+            <h3>{this.state.subject}</h3>
+            <h3>{this.state.verb}</h3>
           </div>
     );
   }

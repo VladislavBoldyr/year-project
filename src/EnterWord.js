@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './EnterWord.css';
+import SelectTime from './SelectTime.js';
 
 export default class EnterWord extends React.Component{
    constructor(props) {
       super(props);
       this.state={
-        subject:"",
-        verb:""
+        subject:this.props.subject,
+        verb:this.props.verb
       }
       this.handleChangeSubject = this.handleChangeSubject.bind(this);
       this.handleChangeVerb = this.handleChangeVerb.bind(this);
@@ -45,6 +46,9 @@ export default class EnterWord extends React.Component{
              </inline>
             </div>
           </p>
+          <div>
+          <SelectTime subject={this.state.subject} verb={this.state.verb} />
+          </div>
          </div>
       );
     }
