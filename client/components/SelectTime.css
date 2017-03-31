@@ -1,0 +1,33 @@
+.play{
+  width:100px;
+  height:100px;
+  outline: none;
+}
+.round {
+  width: 100px;
+  height: 100px;
+  background: #ffffff;
+ -moz-border-radius: 50px;
+ -webkit-border-radius: 50px;
+  border-radius: 50px;
+  outline: none;
+  text-align:center;
+  margin: 10px;
+}
+.round1{
+  width: 100px;
+  height: 100px;
+  background: #ffffff;
+ -moz-border-radius: 50px;
+ -webkit-border-radius: 50px;
+  border-radius: 50px;
+  outline: none;
+  text-align:center;
+  margin: 10px;
+}
+.round:focus{
+  border: 1px solid #fd0;
+}
+.round1:focus{
+  border: 1px solid green;
+}
