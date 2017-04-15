@@ -4,16 +4,16 @@ import Constants from '../constants/AppConstants';
 import api from '../api';
 
 const WordActions = {
-    writeWord(word) {
-      //  api.addWords(word)
-        // .then(() =>
+    writeWord(subject,verb) {
+          api.addWords(subject,verb)
+         .then(() =>
             AppDispatcher.dispatch({
               type:Constants.WRITTEN
             })
-       //)
-       //.catch(err =>
-        //    console.error(err)
-       //);
+       )
+       .catch(err =>
+          console.error(err)
+       );
     }
 };
 

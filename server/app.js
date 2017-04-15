@@ -22,6 +22,17 @@ app.use(cors({ origin: '*' }));
 /*app.get('/words', (req, res) => {
     db.listWords().then(data => res.send(data));
 });*/
+app.get('/written',(req,res)=> {
+   res.send('API is running');
+  res.send('hello world');
+});
+app.post('/written',(req,res) => {
+   res.send('API is running');
+  let subject = req.body.subject;
+  console.log("Hello");
+  //console.log(req.body.subject);
+
+});
 
 const server = app.listen(serverPort, function() {
     console.log(`Server is up and running on port ${serverPort}`);

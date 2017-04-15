@@ -18,12 +18,11 @@ export default class EnterWord extends Component {
         verb: WordsStore.getVerb(),
         subject: WordsStore.getSubject()
     };
-    this.handleWordAdd = this.handleWordAdd.bind(this);
     this.changeVerb = this.changeVerb.bind(this);
     this.changeSubject = this.changeSubject.bind(this);
     this.enterSubject = this.enterSubject.bind(this);
     this.enterVerb = this.enterVerb.bind(this);
-    //getStateFromFlux();
+    this.handleWordsAdd = this.handleWordsAdd.bind(this);
   }
 
   /*componentWillMount() {
@@ -33,10 +32,13 @@ export default class EnterWord extends Component {
   componentDidMount() {
       WordsStore.addChangeListener(this._onChange);
   }
-
   componentWillUnmount() {
       WordsStore.removeChangeListener(this._onChange);
   }
+  /*shouldComponentUpdate(nextProps, nextState) {
+    return nextState.subject !== this.state.subject;
+
+}*/
   enterSubject() {
     let _subject =  WordsStore.getSubject();
     this.setState({
@@ -51,27 +53,17 @@ export default class EnterWord extends Component {
       subject:this.state.subject
     });
   }
-  handleWordAdd() {
-    //const _word = word.target.value;
-    //  WordsActions.writeWord(_word);
-      let _verb = WordsStore.getVerb();
-      this.setState({
-        subject:this.state.subject,
-        verb:_verb
-      });
+  handleWordsAdd() {
+      WordsActions.writeWord(this.state.subject,this.state.verb);
   }
-
   changeVerb(val) {
-
     const _verb = val.target.value;
     WordsStore.setVerb(_verb);
   }
   changeSubject(val) {
-
     const _subject = val.target.value;
     WordsStore.setSubject(_subject);
   }
-
     render () {
       return (
         <div>
@@ -92,7 +84,7 @@ export default class EnterWord extends Component {
             </div>
           </p>
           <div>
-         <SelectTime/>
+         <SelectTime handleWordsAdd = {this.handleWordsAdd}/>
          </div>
          <div>{this.state.subject}</div>
          <div>{this.state.verb}</div>

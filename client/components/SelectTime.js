@@ -3,6 +3,8 @@ import playButtonDown from './playButtonDown.svg';
 import playButtonUp from './playButtonUp.svg';
 import './SelectTime.css';
 
+//баг с выделение круга,при нажатие на первый ряд,реагирует div со вторым рядом
+//разобраться со свойстом круга
 export  default class SelectTime extends React.Component {
   constructor(props) {
      super(props);
@@ -21,6 +23,7 @@ export  default class SelectTime extends React.Component {
      this.viewText = this.viewText.bind(this);
   }
   inverseImage() {
+    this.props.handleWordsAdd();
     this.setState({
       checkImage:!this.state.checkImage
     });
@@ -74,7 +77,7 @@ export  default class SelectTime extends React.Component {
   }
   render () {
     let ViewElementsTime = <div></div>
-    let checkViewImage = <input type="image" name="picture"  src={playButtonDown} className="play" onClick={this.inverseImage} />
+    let checkViewImage = <input type="image" name="picblablaAppblablaAppture"  src={playButtonDown} className="play" onClick={this.inverseImage} />
     if (this.state.checkImage) {
         checkViewImage =
             <div>

@@ -53,9 +53,9 @@ AppDispatcher.register(function(action) {
         case AppConstants.WRITTEN: {
             _isLoading = false;
             _subject = _subject;
-            _verb = _verb + "ing";
+            _verb = _verb;
             _loadingError = null;
-            alert(_verb);
+
             TasksStore.emitChange();
             break;
         }
