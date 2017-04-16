@@ -7,6 +7,7 @@ import { serverPort } from '../etc/config.json';
 //import * as db from './utils/DataBaseUtils';
 
 // Initialization of express application
+//const express = require('express');
 const app = express();
 
 // Set up connection of database
@@ -22,13 +23,14 @@ app.use(cors({ origin: '*' }));
 /*app.get('/words', (req, res) => {
     db.listWords().then(data => res.send(data));
 });*/
-app.get('/written',(req,res)=> {
-   res.send('API is running');
-  res.send('hello world');
+app.get('/',(req,res)=> {
+   //res.send('API is running');
+  res.send(req.body);
+  console.log(req.body);
 });
-app.post('/written',(req,res) => {
+app.post('/',(req,res) => {
    res.send('API is running');
-  let subject = req.body.subject;
+  let subject = req.body;
   console.log("Hello");
   //console.log(req.body.subject);
 

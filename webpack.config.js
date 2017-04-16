@@ -7,6 +7,10 @@ module.exports = {
         publicPath: "build/",
         filename: "bundle.js"
     },
+    node: {
+        dns: 'mock',
+        net: 'mock'
+    },
     module: {
         loaders: [
             {

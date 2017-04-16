@@ -3,24 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.8.5"
-  },
-  "dependencies": {
-    "axios": "^0.9.1",
-    "body-parser": "^1.12.3",
-    "classnames": "^2.2.3",
-    "cors": "*",
-    "events": "^1.1.0",
-    "express": "*",
-    "flux": "^2.1.1",
-    "jquery": "*",
-    "keymirror": "^0.1.1",
-    "less": "^2.6.0",
-    "mongoose": "*",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
-  },
-  "devDependencies": {
     "autoprefixer-loader": "*",
     "babel": "5.x",
     "babel-loader": "5.*",
@@ -34,11 +16,28 @@
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
   },
+  "dependencies": {
+    "axios": "^0.9.1",
+    "body-parser": "^1.12.3",
+    "classnames": "^2.2.3",
+    "cors": "*",
+    "events": "^1.1.0",
+    "express": "*",
+    "fetch": "^1.1.0",
+    "flux": "^2.1.1",
+    "jquery": "*",
+    "keymirror": "^0.1.1",
+    "less": "^2.6.0",
+    "mongoose": "*",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "server": "babel-node server/app.js",
     "webpack-devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8090 --host 0.0.0.0",
     "build": "react-scripts build",
+    "babel": "babel —presets es2015 /main.js -o build/main.bundle.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
