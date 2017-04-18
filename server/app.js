@@ -7,7 +7,6 @@ import { serverPort } from '../etc/config.json';
 //import * as db from './utils/DataBaseUtils';
 
 // Initialization of express application
-//const express = require('express');
 const app = express();
 
 // Set up connection of database
@@ -20,22 +19,55 @@ app.use( bodyParser.json() );
 app.use(cors({ origin: '*' }));
 
 // RESTful api handlers
-/*app.get('/words', (req, res) => {
-    db.listWords().then(data => res.send(data));
-});*/
+
 app.get('/',(req,res)=> {
-   //res.send('API is running');
   res.send(req.body);
   console.log(req.body);
 });
 app.post('/',(req,res) => {
-   res.send('API is running');
-  let subject = req.body;
-  console.log("Hello");
-  //console.log(req.body.subject);
-
+  let subject = req.body.subject;
+  console.log(typeof subject);
+  let verb = req.body.verb;
+  let js = {
+    subject:subject
+  };
+  console.log(js);
+res.send(subject);
+  console.log(subject);
+  console.log(verb);
 });
 
 const server = app.listen(serverPort, function() {
     console.log(`Server is up and running on port ${serverPort}`);
 });
+
+/*let http = require('http');
+
+let s = http.createServer();
+s.on('request', function(request, response) {
+      response.writeHead(200,{
+        'Content-Type': 'x-www-form-urlen-coded'
+    });
+      console.log(request.method);
+      console.log(request.headers);
+      console.log(request.url);
+
+      let data = '';
+      request.on('data', function(chunk) {
+        data += chunk.toString();
+      });
+      request.on('error', function(err) {
+        // This prints the error message and stack trace to `stderr`.
+          console.log(err.stack);
+      });
+      request.on('end', function() {
+        console.log(data);
+        response.write("hello");
+        response.end();
+      });
+
+});
+
+s.listen(`${serverPort}`);
+console.log(`Browse to http://127.0.0.1: ${serverPort}`);
+*/

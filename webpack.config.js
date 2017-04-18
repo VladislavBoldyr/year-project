@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry: "./client/index.js",
+    entry: ["./client/index.js",'whatwg-fetch'],
     output: {
         path: __dirname + '/public/build/',
         publicPath: "build/",

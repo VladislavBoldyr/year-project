@@ -12,7 +12,7 @@ const WordActions = {
             })
        )
        .catch(err =>
-          console.error(err)
+          console.error('error')
        );
     }
 };
