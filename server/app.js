@@ -4,13 +4,13 @@ import bodyParser from 'body-parser';
 
 import { serverPort } from '../etc/config.json';
 
-//import * as db from './utils/DataBaseUtils';
+import * as db from './utils/DataBaseUtils';
 
 // Initialization of express application
 const app = express();
 
 // Set up connection of database
-//db.setUpConnection();
+db.setUpConnection();
 
 // Using bodyParser middleware
 app.use( bodyParser.json() );
@@ -25,16 +25,12 @@ app.get('/',(req,res)=> {
   console.log(req.body);
 });
 app.post('/',(req,res) => {
+  db.listNotes().then(data => console.log(data));
   let subject = req.body.subject;
-  console.log(typeof subject);
-  let verb = req.body.verb;
-  let js = {
-    subject:subject
-  };
-  console.log(js);
-res.send(subject);
-  console.log(subject);
-  console.log(verb);
+  //let verb = req.body.verb;
+   res.send(subject);
+  //console.log(subject);
+  //console.log(verb);
 });
 
 const server = app.listen(serverPort, function() {

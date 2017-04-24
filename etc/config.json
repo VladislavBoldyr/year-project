@@ -2,7 +2,7 @@
     "apiPrefix": "http://localhost:8080",
     "serverPort": "8080",
     "db":{
-        "name": "words",
+        "name": "regular_verb",
         "host": "localhost",
         "port": 27017
     }
