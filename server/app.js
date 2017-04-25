@@ -20,17 +20,11 @@ app.use(cors({ origin: '*' }));
 
 // RESTful api handlers
 
-app.get('/',(req,res)=> {
-  res.send(req.body);
-  console.log(req.body);
-});
+
 app.post('/',(req,res) => {
-  db.listNotes().then(data => console.log(data));
+   db.listNotes().then(data => console.log(data));
   let subject = req.body.subject;
-  //let verb = req.body.verb;
    res.send(subject);
-  //console.log(subject);
-  //console.log(verb);
 });
 
 const server = app.listen(serverPort, function() {

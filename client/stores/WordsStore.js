@@ -8,6 +8,8 @@ const CHANGE_EVENT = 'change';
 
 let  _subject = "";
 let  _verb = "";
+let _time = "";
+let _type ="";
 let _loadingError = null;
 let _isLoading = true;
 
@@ -28,7 +30,18 @@ const TasksStore = Object.assign({}, EventEmitter.prototype, {
     getVerb() {
         return _verb;
     },
-
+    setTime(time) {
+      _time = time;
+    },
+    setType(type) {
+      _type = type;
+    },
+    getTime() {
+      return _time;
+    },
+    getType() {
+      return _type;
+    },
     emitChange: function() {
         this.emit(CHANGE_EVENT);
     },
