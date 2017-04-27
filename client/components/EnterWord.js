@@ -84,7 +84,10 @@ export default class EnterWord extends Component {
             </div>
           </p>
           <div>
-         <SelectTime handleWordsAdd = {this.handleWordsAdd}/>
+         <SelectTime
+            subject = {this.state.subject}
+            verb = {this.state.verb}
+          />
          </div>
          <div>{this.state.subject}</div>
          <div>{this.state.verb}</div>

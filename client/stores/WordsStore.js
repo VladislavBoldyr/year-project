@@ -62,8 +62,17 @@ AppDispatcher.register(function(action) {
             TasksStore.emitChange();
             break;
         }
-
-        case AppConstants.WRITTEN: {
+        case AppConstants.REQUEST: {
+          _isLoading = false;
+          _subject = _subject;
+          _verb = _verb;
+          _time = _time;
+          _type =_type;
+          _loadingError = null;
+          TasksStore.emitChange();
+          break;
+        }
+        /*case AppConstants.WRITTEN: {
             _isLoading = false;
             _subject = _subject;
             _verb = _verb;
@@ -76,8 +85,8 @@ AppDispatcher.register(function(action) {
           _type =_type;
           TasksStore.emitChange();
           break;
-        }
-        
+        }*/
+
 
         /*case AppConstants.LOAD_NOTES_FAIL: {
             _loadingError = action.error;

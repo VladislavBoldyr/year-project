@@ -62,11 +62,10 @@ export  default class SelectTime extends React.Component {
     this.setState({modalIsOpen: false});
   }
   closeModalYes() {
-    WordsActions.englishTimeType(this.state.time,this.state.type);
+    WordsActions.request(this.props.subject,this.props.verb,this.state.time,this.state.type);
     this.setState({modalIsOpen: false});
   }
   inverseImage() {
-    this.props.handleWordsAdd();
     this.setState({
       checkImage:!this.state.checkImage
     });
@@ -102,6 +101,7 @@ export  default class SelectTime extends React.Component {
   }
   saveStateFuture() {
     WordsStore.setTime('Future');
+    alert(this.props.subject);
     /*if (!this.state.checkOpen) {
         this.setState({
           checkOpen:false
