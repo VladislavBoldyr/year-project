@@ -25,31 +25,20 @@ export default {
                 });
 //x-www-form-urlen-coded;text/plain;charset=UTF-8
     },
-    addTime(time) {
+    addTimeAndType(time,type) {
       return fetch('http://localhost:8080', {
                     method: 'POST',
                     headers: {
                       "Content-type": "application/json"
                     },
                     body: JSON.stringify({
-                      time: time
-                    })
-             })
-             .then(response => response.text())
-             .catch(error => console.log('Request failed',error));
-    },
-    addType(type) {
-      return fetch('http://localhost:8080', {
-                    method: 'POST',
-                    headers: {
-                      "Content-type": "application/json"
-                    },
-                    body: JSON.stringify({
+                      time: time,
                       type: type
                     })
              })
              .then(response => response.text())
              .catch(error => console.log('Request failed',error));
     }
+
 
 }

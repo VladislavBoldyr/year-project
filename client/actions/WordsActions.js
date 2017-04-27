@@ -15,20 +15,11 @@ const WordActions = {
       console.error('error')
       );
     },
-    englishTime(time) {
-      api.addTime(time)
+    englishTimeType(time,type) {
+      api.addTimeAndType(time,type)
       .then(() =>
           AppDispatcher.dispatch({
             type:Constants.TIME
-          })
-      ).
-      catch(err => console.error('error'));
-    },
-    englishTypeOfTime(type) {
-      api.addType(type)
-      .then(() =>
-          AppDispatcher.dispatch({
-            type:Constants.TYPE
           })
       ).
       catch(err => console.error('error'));

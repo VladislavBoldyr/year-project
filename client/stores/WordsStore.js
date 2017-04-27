@@ -73,14 +73,11 @@ AppDispatcher.register(function(action) {
         }
         case AppConstants.TIME: {
           _time = _time;
-          TasksStore.emitChange();
-          break;
-        }
-        case AppConstants.TYPE: {
           _type =_type;
           TasksStore.emitChange();
           break;
         }
+        
 
         /*case AppConstants.LOAD_NOTES_FAIL: {
             _loadingError = action.error;

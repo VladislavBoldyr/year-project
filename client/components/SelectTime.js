@@ -4,6 +4,7 @@ import playButtonUp from './playButtonUp.svg';
 import './SelectTime.css';
 import WordsStore from  '../stores/WordsStore';
 import Modal from 'react-modal';
+import WordsActions from '../actions/WordsActions';
 
 const customStyles = {
   content : {
@@ -61,6 +62,7 @@ export  default class SelectTime extends React.Component {
     this.setState({modalIsOpen: false});
   }
   closeModalYes() {
+    WordsActions.englishTimeType(this.state.time,this.state.type);
     this.setState({modalIsOpen: false});
   }
   inverseImage() {
