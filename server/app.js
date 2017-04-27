@@ -22,9 +22,10 @@ app.use(cors({ origin: '*' }));
 
 
 app.post('/',(req,res) => {
-   db.listNotes().then(data => console.log(data));
-  let subject = req.body.subject;
-   res.send(subject);
+  console.log(req.body);
+  // db.listNotes().then(data => console.log(data));
+   //let subject = req.body.subject;
+   //res.send(subject);
 });
 
 const server = app.listen(serverPort, function() {

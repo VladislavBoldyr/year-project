@@ -68,9 +68,18 @@ AppDispatcher.register(function(action) {
             _subject = _subject;
             _verb = _verb;
             _loadingError = null;
-
             TasksStore.emitChange();
             break;
+        }
+        case AppConstants.TIME: {
+          _time = _time;
+          TasksStore.emitChange();
+          break;
+        }
+        case AppConstants.TYPE: {
+          _type =_type;
+          TasksStore.emitChange();
+          break;
         }
 
         /*case AppConstants.LOAD_NOTES_FAIL: {

@@ -2,25 +2,66 @@ import React,{Component} from 'react';
 import playButtonDown from './playButtonDown.svg';
 import playButtonUp from './playButtonUp.svg';
 import './SelectTime.css';
+import WordsStore from  '../stores/WordsStore';
+import Modal from 'react-modal';
 
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
 //баг с выделение круга,при нажатие на первый ряд,реагирует div со вторым рядом
 //разобраться со свойстом круга
 export  default class SelectTime extends React.Component {
   constructor(props) {
      super(props);
      this.state={
+     time: WordsStore.getTime(),
+     type: WordsStore.getType(),
      checkImage:false,
-     checkElementTime:false,
+     checkElementTime:true,
      checkOpen:true,
      checkState:"",
-     text:""
+     text:"",
+     modalIsOpen: false
      }
 
      this.inverseImage = this.inverseImage.bind(this);
      this.saveStatePast = this.saveStatePast.bind(this);
      this.saveStatePresent = this.saveStatePresent.bind(this);
      this.saveStateFuture = this.saveStateFuture.bind(this);
-     this.viewText = this.viewText.bind(this);
+     this.openModal = this.openModal.bind(this);
+     this.afterOpenModal = this.afterOpenModal.bind(this);
+     this.closeModalNo = this.closeModalNo.bind(this);
+     this.closeModalYes = this.closeModalYes.bind(this);
+     this.saveTypeSimple = this.saveTypeSimple.bind(this);
+     this.saveTypeContinuos = this.saveTypeContinuos.bind(this);
+     this.saveTypePrefectSimple = this.saveTypePrefectSimple.bind(this);
+     this.saveTypePrefectContinuos = this.saveTypePrefectContinuos.bind(this);
+  }
+  componentDidMount() {
+      WordsStore.addChangeListener(this._onChange);
+  }
+  componentWillUnmount() {
+      WordsStore.removeChangeListener(this._onChange);
+  }
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    this.refs.subtitle.style.color = '#f00';
+  }
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+  closeModalNo() {
+    this.setState({modalIsOpen: false});
+  }
+  closeModalYes() {
+    this.setState({modalIsOpen: false});
   }
   inverseImage() {
     this.props.handleWordsAdd();
@@ -29,52 +70,74 @@ export  default class SelectTime extends React.Component {
     });
   }
   saveStatePast() {
-    if (!this.state.checkOpen) {
+    //не знаю зачем это я писал)
+    /*if (!this.state.checkOpen) {
         this.setState({
-          checkState:"past",
           checkOpen:false
         });
         return;
-    }
-
+    }*/
+    WordsStore.setTime('Past');
     this.setState({
-      checkElementTime:!this.state.checkElementTime,
-      checkState:"past",
-      checkOpen:false
+      time:WordsStore.getTime(),
+      //checkElementTime:!this.state.checkElementTime
+      //если перевыбирать время,то получается что придется два раза кликать по нему,если всего лишь поменял время два раза
     });
 
   }
   saveStatePresent() {
-    if (!this.state.checkOpen) {
+    WordsStore.setTime('Present');
+    /*if (!this.state.checkOpen) {
         this.setState({
-          checkState:"present",
           checkOpen:false
         });
         return;
-    }
+    }*/
     this.setState({
-      checkElementTime:!this.state.checkElementTime,
-      checkState:"present"
+      time:WordsStore.getTime(),
+      //checkElementTime:!this.state.checkElementTime
     });
   }
   saveStateFuture() {
-    if (!this.state.checkOpen) {
+    WordsStore.setTime('Future');
+    /*if (!this.state.checkOpen) {
         this.setState({
-          checkState:"future",
           checkOpen:false
         });
         return;
+    }*/
+    this.setState({
+      time:WordsStore.getTime(),
+      //checkElementTime:!this.state.checkElementTime,
+    });
+  }
+
+    saveTypeSimple() {
+      WordsStore.setType('Simple');
+      this.setState({
+        type:WordsStore.getType()
+      });
     }
-    this.setState({
-      checkElementTime:!this.state.checkElementTime,
-      checkState:"future"
-    });
-  }
-  viewText() {
-    this.setState({
-      text:"///"
-    });
-  }
+    saveTypeContinuos() {
+      WordsStore.setType('Continuos');
+      this.setState({
+        type:WordsStore.getType()
+      });
+    }
+    saveTypePrefectSimple() {
+      WordsStore.setType('Prefect Simple');
+      this.setState({
+        type:WordsStore.getType()
+      });
+    }
+    saveTypePrefectContinuos() {
+      WordsStore.setType('Prefect Continuos');
+      this.setState({
+        type:WordsStore.getType()
+      });
+    }
+
+
   render () {
     let ViewElementsTime = <div></div>
     let checkViewImage = <input type="image" name="picblablaAppblablaAppture"  src={playButtonDown} className="play" onClick={this.inverseImage} />
@@ -96,10 +159,10 @@ export  default class SelectTime extends React.Component {
         ViewElementsTime =
             <div>
               <inline>
-                <button  className="round1">Simple</button>
-                <button className="round1">Continuos</button>
-                <button className="round1">Prefect Simple</button>
-                <button className="round1">Prefect Continuos</button>
+                <button onClick={(event) => {this.openModal();this.saveTypeSimple()}}  className="round1">Simple</button>
+                <button onClick={(event) => {this.openModal();this.saveTypeContinuos()}}  className="round1">Continuos</button>
+                <button onClick={(event) => {this.openModal();this.saveTypePrefectSimple()}}  className="round1">Prefect Simple</button>
+                <button onClick={(event) => {this.openModal();this.saveTypePrefectContinuos()}}  className="round1">Prefect Continuos</button>
               </inline>
             </div>
     }
@@ -107,6 +170,21 @@ export  default class SelectTime extends React.Component {
           <div>
             {checkViewImage}
             {ViewElementsTime}
+            <div>
+              <Modal
+                isOpen={this.state.modalIsOpen}
+                onAfterOpen={this.afterOpenModal}
+                onRequestClose={this.closeModal}
+                style={customStyles}
+                contentLabel="Example Modal"
+              >
+                <h4>Want to work with {this.state.time} {this.state.type}</h4>
+                  <form>
+                    <button onClick={this.closeModalNo}>No</button>
+                    <button onClick={this.closeModalYes}>Yes</button>
+                 </form>
+              </Modal>
+            </div>
           </div>
     );
   }
