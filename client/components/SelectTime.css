@@ -12,7 +12,7 @@
   border-radius: 50px;
   outline: none;
   text-align:center;
-  margin: 10px;
+  margin-left:45px;
 }
 .round1{
   width: 100px;
@@ -23,11 +23,19 @@
   border-radius: 50px;
   outline: none;
   text-align:center;
-  margin: 10px;
+  margin:10px;
 }
 .round:focus{
   border: 1px solid #fd0;
 }
 .round1:focus{
   border: 1px solid green;
+}
+.form{
+  outline: none;
+  margin-left:70px;
+  width:  60px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 50px;
 }

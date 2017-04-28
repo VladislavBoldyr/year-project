@@ -29,7 +29,10 @@ export  default class SelectTime extends React.Component {
      checkOpen:true,
      checkState:"",
      text:"",
-     modalIsOpen: false
+     modalIsOpen: false,
+     statement:"",
+     question:"",
+     negation:""
      }
 
      this.inverseImage = this.inverseImage.bind(this);
@@ -44,6 +47,10 @@ export  default class SelectTime extends React.Component {
      this.saveTypeContinuos = this.saveTypeContinuos.bind(this);
      this.saveTypePrefectSimple = this.saveTypePrefectSimple.bind(this);
      this.saveTypePrefectContinuos = this.saveTypePrefectContinuos.bind(this);
+     this.formStatement = this.formStatement.bind(this);
+     this.formQuestion = this.formQuestion.bind(this);
+     this.formNegation = this.formNegation.bind(this);
+
   }
   componentDidMount() {
       WordsStore.addChangeListener(this._onChange);
@@ -64,6 +71,22 @@ export  default class SelectTime extends React.Component {
   closeModalYes() {
     WordsActions.request(this.props.subject,this.props.verb,this.state.time,this.state.type);
     this.setState({modalIsOpen: false});
+    alert(this.state.question);
+  }
+  formStatement() {
+    this.setState({
+      statement:"statement"
+    });
+  }
+  formQuestion() {
+    this.setState({
+      question:"question"
+    });
+  }
+  formNegation() {
+    this.setState({
+      negation:"negation"
+    });
   }
   inverseImage() {
     this.setState({
@@ -101,7 +124,6 @@ export  default class SelectTime extends React.Component {
   }
   saveStateFuture() {
     WordsStore.setTime('Future');
-    alert(this.props.subject);
     /*if (!this.state.checkOpen) {
         this.setState({
           checkOpen:false
@@ -166,6 +188,11 @@ export  default class SelectTime extends React.Component {
                 <button onClick={(event) => {this.openModal();this.saveTypePrefectSimple()}}  className="round1">Prefect Simple</button>
                 <button onClick={(event) => {this.openModal();this.saveTypePrefectContinuos()}}  className="round1">Prefect Continuos</button>
               </inline>
+              <div>
+                <button className="form" onClick={this.formStatement}>!</button>
+                <button className="form" onClick={this.formQuestion}>?</button>
+                <button className="form" onClick={this.formNegation}>-</button>
+              </div>
             </div>
     }
     return (
