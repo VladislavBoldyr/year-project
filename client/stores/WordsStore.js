@@ -9,20 +9,41 @@ const CHANGE_EVENT = 'change';
 let  _subject = "";
 let  _verb = "";
 let _time = "";
-let _type ="";
+let _type = "";
 let _loadingError = null;
 let _isLoading = true;
+let _statment = "";
+let _question = "";
+let _negation = "";
 
 
 const TasksStore = Object.assign({}, EventEmitter.prototype, {
     isLoading() {
         return _isLoading;
     },
+    setStatment(form) {
+      _statment = form;
+    },
+    setQuestion (form) {
+      _question = form;
+    },
+    setNegation (form) {
+      _negation = form;
+    },
     setVerb(verb) {
       _verb = verb;
     },
     setSubject(subject) {
       _subject = subject;
+    },
+    getStatment () {
+      return _statment;
+    },
+    getQuestion() {
+      return _question;
+    },
+    getNegation() {
+      return _negation;
     },
     getSubject() {
         return _subject;

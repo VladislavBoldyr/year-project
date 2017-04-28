@@ -69,9 +69,8 @@ export  default class SelectTime extends React.Component {
     this.setState({modalIsOpen: false});
   }
   closeModalYes() {
-    WordsActions.request(this.props.subject,this.props.verb,this.state.time,this.state.type);
+    WordsActions.request(this.props.subject,this.props.verb,this.state.time,this.state.type,this.state.statement,this.state.question,this.state.negation);
     this.setState({modalIsOpen: false});
-    alert(this.state.question);
   }
   formStatement() {
     this.setState({
