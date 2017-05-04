@@ -70,7 +70,6 @@ export  default class SelectTime extends React.Component {
     this.setState({modalIsOpen: false});
   }
   typeSentence(param,e) {
-    alert(param);
     this.setState({
       typeSentence:param
     });
@@ -170,15 +169,18 @@ export  default class SelectTime extends React.Component {
         ViewElementsTime =
             <div>
               <inline>
-                <button onClick={(event) => {this.openModal();this.saveTypeSimple()}}  className="round1">Simple</button>
-                <button onClick={(event) => {this.openModal();this.saveTypeContinuos()}}  className="round1">Continuos</button>
-                <button onClick={(event) => {this.openModal();this.saveTypePrefectSimple()}}  className="round1">Prefect Simple</button>
-                <button onClick={(event) => {this.openModal();this.saveTypePrefectContinuos()}}  className="round1">Prefect Continuos</button>
+                <button onClick={(event) => {this.saveTypeSimple()}}  className="round1">Simple</button>
+                <button onClick={(event) => {this.saveTypeContinuos()}}  className="round1">Continuos</button>
+                <button onClick={(event) => {this.saveTypePrefectSimple()}}  className="round1">Prefect Simple</button>
+                <button onClick={(event) => {this.saveTypePrefectContinuos()}}  className="round1">Prefect Continuos</button>
               </inline>
               <div>
                 <button className="form" onClick={this.typeSentence.bind(this,'statement')}>!</button>
                 <button className="form" onClick={this.typeSentence.bind(this,'question')}>?</button>
                 <button className="form" onClick={this.typeSentence.bind(this,'negation')}>-</button>
+              </div>
+              <div>
+                <button className="ellipse" onClick={this.openModal}>Save structure</button>
               </div>
             </div>
     }
