@@ -1,15 +1,15 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-
+//import {algoritmForRegularVerbs} from './algoritmForRegularVerbs';
 import { serverPort } from '../etc/config.json';
-
+import * as alg from './algoritmForRegularVerbs';
 import * as db from './utils/DataBaseUtils';
-import ./algoritmForRegularVerbs;
+
 
 // Initialization of express application
 const app = express();
-
+let algoritmForRegularVerbs = require('./algoritmForRegularVerbs');
 // Set up connection of database
 db.setUpConnection();
 
@@ -22,22 +22,34 @@ app.use(cors({ origin: '*' }));
 // RESTful api handlers
 
 
-app.post('/',(req,res) => {
+app.post('/', (req,res) => {
   console.log(req.body);
+   let resualt="l";
    db.listNotes(req.body.verb).then(data => {
-     //let object = JSON.stringify(data);
      if (data == null) {
-
+      // console.log(alg.algoritmForRegularVerbs(req.body.subject,req.body.verb,req.body.time,req.body.type,req.body.typeSentence));
+       resualt= alg.algoritmForRegularVerbs(req.body.subject,req.body.verb,req.body.time,req.body.type,req.body.typeSentence);
+       //let res = algoritmForRegularVerbs(req.body.subject,reb.body.verb,req.body.time,req.body.type,req.body.typeSentence);
+       //console.log(res);
+       console.log(resualt);
+       return resualt;
+              //console.log(algoritmForRegularVerbs(req.body.subject,reb.body.verb,req.body.time,req.body.type,req.body.typeSentence));
+        //algoritmForRegularVerbs(req.body.subject,reb.body.verb,req.body.time,req.body.type,req.body.typeSentence);
+      //  console.log(algoritmForRegularVerbs(req.body.subject,reb.body.verb,req.body.time,req.body.type,req.body.typeSentence));
      }
      else {
-       algoritmForRegularVerbs(req.body.subject,reb.body.verb)
+       console.log("kek");
+
      }
 
      //let array = data;
      //console.log(array[0].body.word);
+   }).then(function(data){
+        res.send(data);
    });
    //let subject = req.body.subject;
-   //res.send(subject);
+
+   //res.send(resualt);
 });
 
 const server = app.listen(serverPort, function() {

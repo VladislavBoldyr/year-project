@@ -135,13 +135,13 @@ export  default class SelectTime extends React.Component {
       });
     }
     saveTypePrefectSimple() {
-      WordsStore.setType('Prefect Simple');
+      WordsStore.setType('PrefectSimple');
       this.setState({
         type:WordsStore.getType()
       });
     }
     saveTypePrefectContinuos() {
-      WordsStore.setType('Prefect Continuos');
+      WordsStore.setType('PrefectContinuos');
       this.setState({
         type:WordsStore.getType()
       });
