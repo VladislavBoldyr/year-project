@@ -30,9 +30,7 @@ export  default class SelectTime extends React.Component {
      checkState:"",
      text:"",
      modalIsOpen: false,
-     statement:"",
-     question:"",
-     negation:""
+     typeSentence:"",
      }
 
      this.inverseImage = this.inverseImage.bind(this);
@@ -47,9 +45,8 @@ export  default class SelectTime extends React.Component {
      this.saveTypeContinuos = this.saveTypeContinuos.bind(this);
      this.saveTypePrefectSimple = this.saveTypePrefectSimple.bind(this);
      this.saveTypePrefectContinuos = this.saveTypePrefectContinuos.bind(this);
-     this.formStatement = this.formStatement.bind(this);
-     this.formQuestion = this.formQuestion.bind(this);
-     this.formNegation = this.formNegation.bind(this);
+     this.typeSentence = this.typeSentence.bind(this);
+
 
   }
   componentDidMount() {
@@ -69,22 +66,13 @@ export  default class SelectTime extends React.Component {
     this.setState({modalIsOpen: false});
   }
   closeModalYes() {
-    WordsActions.request(this.props.subject,this.props.verb,this.state.time,this.state.type,this.state.statement,this.state.question,this.state.negation);
+    WordsActions.request(this.props.subject,this.props.verb,this.state.time,this.state.type,this.state.typeSentence);
     this.setState({modalIsOpen: false});
   }
-  formStatement() {
+  typeSentence(param,e) {
+    alert(param);
     this.setState({
-      statement:"statement"
-    });
-  }
-  formQuestion() {
-    this.setState({
-      question:"question"
-    });
-  }
-  formNegation() {
-    this.setState({
-      negation:"negation"
+      typeSentence:param
     });
   }
   inverseImage() {
@@ -188,9 +176,9 @@ export  default class SelectTime extends React.Component {
                 <button onClick={(event) => {this.openModal();this.saveTypePrefectContinuos()}}  className="round1">Prefect Continuos</button>
               </inline>
               <div>
-                <button className="form" onClick={this.formStatement}>!</button>
-                <button className="form" onClick={this.formQuestion}>?</button>
-                <button className="form" onClick={this.formNegation}>-</button>
+                <button className="form" onClick={this.typeSentence.bind(this,'statement')}>!</button>
+                <button className="form" onClick={this.typeSentence.bind(this,'question')}>?</button>
+                <button className="form" onClick={this.typeSentence.bind(this,'negation')}>-</button>
               </div>
             </div>
     }

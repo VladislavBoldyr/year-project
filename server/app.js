@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import { serverPort } from '../etc/config.json';
 
 import * as db from './utils/DataBaseUtils';
+import ./algoritmForRegularVerbs;
 
 // Initialization of express application
 const app = express();
@@ -23,7 +24,18 @@ app.use(cors({ origin: '*' }));
 
 app.post('/',(req,res) => {
   console.log(req.body);
-  // db.listNotes().then(data => console.log(data));
+   db.listNotes(req.body.verb).then(data => {
+     //let object = JSON.stringify(data);
+     if (data == null) {
+
+     }
+     else {
+       algoritmForRegularVerbs(req.body.subject,reb.body.verb)
+     }
+
+     //let array = data;
+     //console.log(array[0].body.word);
+   });
    //let subject = req.body.subject;
    //res.send(subject);
 });

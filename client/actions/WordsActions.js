@@ -24,8 +24,8 @@ const WordActions = {
       ).
       catch(err => console.error('error'));
     },
-    request(subject,verb,time,type,statement,question,negation) {
-      api.addWordsAndTime(subject,verb,time,type,statement,question,negation)
+    request(subject,verb,time,type,typeSentence) {
+      api.addWordsAndTime(subject,verb,time,type,typeSentence)
       .then(() =>
         AppDispatcher.dispatch({
           type:Constants.REQUEST

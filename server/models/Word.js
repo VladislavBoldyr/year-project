@@ -6,4 +6,4 @@ const WordSchema = new Schema({
     word   : { type: String },
 });
 
-mongoose.model('Word', WordSchema);
+ mongoose.model('Irregular_verbs', WordSchema);

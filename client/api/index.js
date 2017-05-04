@@ -2,7 +2,7 @@ import 'whatwg-fetch';
 import { apiPrefix } from '../../etc/config.json';
 
 export default {
-    addWordsAndTime(subject,verb,time,type,statement,question,negation) {
+    addWordsAndTime(subject,verb,time,type,typeSentence) {
       return fetch('http://localhost:8080', {
                     method: 'POST',
                     headers: {
@@ -13,9 +13,7 @@ export default {
                       verb: verb,
                       time:time,
                       type:type,
-                      statement:statement,
-                      question:question,
-                      negation:negation
+                      typeSentence:typeSentence
                     })
               })
               .then(function (response) {
