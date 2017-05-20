@@ -43,8 +43,8 @@ export  default class SelectTime extends React.Component {
      this.closeModalYes = this.closeModalYes.bind(this);
      this.saveTypeSimple = this.saveTypeSimple.bind(this);
      this.saveTypeContinuos = this.saveTypeContinuos.bind(this);
-     this.saveTypePrefectSimple = this.saveTypePrefectSimple.bind(this);
-     this.saveTypePrefectContinuos = this.saveTypePrefectContinuos.bind(this);
+     this.saveTypePerfectSimple = this.saveTypePerfectSimple.bind(this);
+     this.saveTypePerfectContinuos = this.saveTypePerfectContinuos.bind(this);
      this.typeSentence = this.typeSentence.bind(this);
 
 
@@ -134,14 +134,14 @@ export  default class SelectTime extends React.Component {
         type:WordsStore.getType()
       });
     }
-    saveTypePrefectSimple() {
-      WordsStore.setType('PrefectSimple');
+    saveTypePerfectSimple() {
+      WordsStore.setType('PerfectSimple');
       this.setState({
         type:WordsStore.getType()
       });
     }
-    saveTypePrefectContinuos() {
-      WordsStore.setType('PrefectContinuos');
+    saveTypePerfectContinuos() {
+      WordsStore.setType('PerfectContinuos');
       this.setState({
         type:WordsStore.getType()
       });
@@ -171,8 +171,8 @@ export  default class SelectTime extends React.Component {
               <inline>
                 <button onClick={(event) => {this.saveTypeSimple()}}  className="round1">Simple</button>
                 <button onClick={(event) => {this.saveTypeContinuos()}}  className="round1">Continuos</button>
-                <button onClick={(event) => {this.saveTypePrefectSimple()}}  className="round1">Prefect Simple</button>
-                <button onClick={(event) => {this.saveTypePrefectContinuos()}}  className="round1">Prefect Continuos</button>
+                <button onClick={(event) => {this.saveTypePerfectSimple()}}  className="round1">Perfect Simple</button>
+                <button onClick={(event) => {this.saveTypePerfectContinuos()}}  className="round1">Perfect Continuos</button>
               </inline>
               <div>
                 <button className="form" onClick={this.typeSentence.bind(this,'statement')}>!</button>

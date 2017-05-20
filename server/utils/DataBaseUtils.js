@@ -27,6 +27,10 @@ export function listNotes(verb) {
       if (err) return console.error("error");
     });
 }
+export function findOneElement (verb) {
+  //console.log(verb);
+  return; 
+}
 
 /*export function createNote(data) {
     const note = new Note({

@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 //import {algoritmForRegularVerbs} from './algoritmForRegularVerbs';
 import { serverPort } from '../etc/config.json';
 import * as alg from './algoritmForRegularVerbs';
+import  * as algIrr from './algoritmForIrregularVerbs';
 import * as db from './utils/DataBaseUtils';
 
 
@@ -26,24 +27,18 @@ app.post('/', (req,res) => {
   console.log(req.body);
    let resualt="l";
    db.listNotes(req.body.verb).then(data => {
+     //let a = data.words.req.body.verb;
+     console.log(data.words);
      if (data == null) {
-      // console.log(alg.algoritmForRegularVerbs(req.body.subject,req.body.verb,req.body.time,req.body.type,req.body.typeSentence));
-       resualt= alg.algoritmForRegularVerbs(req.body.subject,req.body.verb,req.body.time,req.body.type,req.body.typeSentence);
-       //let res = algoritmForRegularVerbs(req.body.subject,reb.body.verb,req.body.time,req.body.type,req.body.typeSentence);
-       //console.log(res);
+       resualt = alg.algoritmForRegularVerbs(req.body.subject,req.body.verb,req.body.time,req.body.type,req.body.typeSentence);
        console.log(resualt);
        return resualt;
-              //console.log(algoritmForRegularVerbs(req.body.subject,reb.body.verb,req.body.time,req.body.type,req.body.typeSentence));
-        //algoritmForRegularVerbs(req.body.subject,reb.body.verb,req.body.time,req.body.type,req.body.typeSentence);
-      //  console.log(algoritmForRegularVerbs(req.body.subject,reb.body.verb,req.body.time,req.body.type,req.body.typeSentence));
      }
      else {
-       console.log("kek");
 
      }
 
-     //let array = data;
-     //console.log(array[0].body.word);
+
    }).then(function(data){
         res.send(data);
    });
